@@ -1,0 +1,30 @@
+<view class='outbox'>
+  <!-- <image src='http://oibl5dyji.bkt.clouddn.com/2017092701.png'></image> -->
+  <image src='{{status}}'></image>
+</view>
+<!-- 未打印 -->
+<block wx:if="{{noprint}}">
+  <view class='photoinfo'>
+    <view>
+        照片领取码
+    </view>
+    <view>
+        在打印机上以下列领取码领取照片
+    </view>
+  </view>
+  <view  class='code'>
+    <view wx:for='{{code}}'>
+      <text>{{item}}</text>
+    </view>
+  </view>
+</block>
+<!-- 已经打印 -->
+<block wx:if="{{yesprint}}">
+    <view class='successtip'>
+        你的相片已领取
+    </view>
+    <view catchtap='gotoindex' class='gotobook'>
+    进入我的忆年相册
+    </view>
+</block>
+

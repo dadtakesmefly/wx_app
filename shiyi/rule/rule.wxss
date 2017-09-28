@@ -1,0 +1,9 @@
+
+view image:nth-child(1){
+  width: 750rpx;
+  height: 1482rpx;
+}
+view image:nth-child(2){
+  width:  750rpx;
+  height: 1593rpx;
+}

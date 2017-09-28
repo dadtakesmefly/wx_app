@@ -1,0 +1,78 @@
+view{
+  padding: 0;
+  margin: 0;
+}
+.userpic {
+  text-align: center;
+           
+}
+.userpic image{
+  width: 160rpx;
+  height: 158rpx;
+  border-radius: 50%;
+  margin-top: 52rpx;
+}
+.username{
+  text-align: center;
+  font-size: 26rpx;
+  color:#999;
+  margin-top: 15rpx;
+}
+
+.title{
+  font-size: 34rpx;
+  text-align: center;
+  color: #333;
+  margin-top: 16rpx;
+}
+.slogan{
+  font-size: 24rpx;
+  text-align: center;
+  color: #999;
+  margin-top: 20rpx;
+}
+.text{
+  padding:0 20rpx  ;
+  font-size: 28rpx;
+  color:#999;
+  margin-top: 68rpx;
+  box-sizing: border-box;
+}
+.template {
+  /* background-color: pink; */
+  margin-top: 17rpx;
+  display: flex;
+  padding: 0 12rpx 20rpx 20rpx;
+  flex-flow: row wrap;
+  -ms-flex-pack: distribute;
+  justify-content:flex-start; 
+
+}
+.template .three{
+  width: 230rpx;
+  height: 230rpx;
+  margin-right: 8rpx;
+  margin-top: 8rpx;
+}
+.template .two{
+  width: 350rpx;
+  height: 350rpx;
+  margin-right: 8rpx;
+   margin-top: 8rpx;
+}
+.template .one{
+  width: 710rpx;
+  height: 710rpx;
+   margin-top: 8rpx;
+}
+.link{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 25rpx;
+}
+.link image{
+  width: 598rpx;
+  height: 92rpx;
+}
+

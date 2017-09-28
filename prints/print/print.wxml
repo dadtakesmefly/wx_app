@@ -1,0 +1,9 @@
+<view>
+<image class='banner' src='http://oibl5dyji.bkt.clouddn.com/2017092601.jpg'></image>
+</view>  
+<view catchtap='editpic'>
+    <image class='button' src='http://oibl5dyji.bkt.clouddn.com/2017092602%20.png'></image>
+</view>
+<view>
+<image class='foot' src='http://oibl5dyji.bkt.clouddn.com/2017092603.png'></image>
+</view>

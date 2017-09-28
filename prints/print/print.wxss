@@ -1,0 +1,20 @@
+.banner{
+  width: 750rpx;
+  height:737rpx;
+}
+.button{
+  width: 218rpx;
+  height: 218rpx;
+  position: relative;
+  top:33rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.foot{
+  width: 270rpx;
+  height: 100rpx;
+  position: relative;
+  top:142rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}

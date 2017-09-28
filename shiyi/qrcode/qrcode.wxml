@@ -1,0 +1,6 @@
+ <view>
+<image src='http://oibl5dyji.bkt.clouddn.com/20170928105.jpg'></image>
+<image src='http://oibl5dyji.bkt.clouddn.com/20170928104.png'></image>
+<image src='http://oibl5dyji.bkt.clouddn.com/20170928103.png'></image>
+<image catchtap='seebigpic'  src='{{codepic}}'></image>
+</view> 

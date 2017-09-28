@@ -1,0 +1,21 @@
+<view class='outbox'>
+   <image src='http://oibl5dyji.bkt.clouddn.com/2017092702.png'></image> 
+</view>
+
+<!-- 未打印 -->
+
+   <view class='photoinfo'>
+    <view>
+       你的相片未领取
+    </view>
+    <view class='num'>
+        请输入领取码领取照片
+    </view>
+    <view class='code'>
+    <view wx:for='{{code}}'>
+      <text>{{item}}</text>
+    </view>
+  </view>
+  </view>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

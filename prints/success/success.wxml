@@ -1,0 +1,17 @@
+<view class='outbox'>
+   <image src='http://oibl5dyji.bkt.clouddn.com/2017092703.png'></image> 
+</view>
+
+<!-- 已经打印 -->
+
+    <view class='successtip'>
+        你的相片已领取
+    </view>
+    
+      <view  catchtap='gotoindex' class='gotobook'>
+        进入我的忆年相册
+      </view>
+     
+      
+  
+   

@@ -1,0 +1,70 @@
+<view class="banner">
+   <image class='bannerpic' src='http://oibl5dyji.bkt.clouddn.com/20170928102.jpg'></image> 
+   <navigator url="/pages/shiyi/rule/rule">
+    <image class='rule' src='http://oibl5dyji.bkt.clouddn.com/20170925113430.png'></image>
+   </navigator>
+  
+   <view class='searchinput' >
+    <input confirm-type='search' bindfocus='onfocus'	 bindconfirm='bindconfirm'  placeholder-class="phcolor" class="input-text" name="username"  value='{{promoto}}'   placeholder="{{placeholder}}" /> 
+    <view catchtap='cancel'>
+      <image   class='{{searchpic}}' src='{{serchpicurl}}'></image>
+    </view>  
+  
+  </view>
+</view>
+ 
+<block wx:if="{{mycity}}">
+
+  <!-- 我的城市 横向滚动 -->
+ <view class="section section_gap"> 
+  <view class='mycity'>
+    <image  src='http://oibl5dyji.bkt.clouddn.com/20170925113440.png'></image>
+    <text>我的城市</text>
+  </view>
+  <scroll-view bindtap="tapMove" bindscroll="scroll"  class="scroll-view_H" scroll-x style="width: 100%">
+    <view wx:for="{{mycitylist}}"  catchtap='gotocitydesc'  data-groupid='{{item.groupid}}' class='datalist'>
+      <image src='{{item.gpic}}'></image>
+      <text>{{item.rank}}.{{item.gname}}</text>
+    </view>
+  </scroll-view>
+</view>
+
+</block>
+
+<block wx:if="{{inputonfocus}}">
+<!-- 城市排行 -->
+<view class="order">
+  <!-- 标题 -->
+  <view class='mycity mb_23'>
+    <image  src='http://oibl5dyji.bkt.clouddn.com/20170925113320.png'></image>
+    <text>城市排行</text>
+  </view>
+   <!-- 排序内容 -->
+  <view class='content'>
+      <view wx:for="{{citylist}}" data-groupid='{{item.groupid}}' catchtap='gotocitydesc' class='list clearfix'>
+          <image class='fl' src='{{item.gpic}}'></image>
+          <view class='innerbox'>
+            <text class='city'><text class='Num'>{{item.rank}}</text> {{item.gname}}</text>
+            <text class='photonum'>照片数 : {{item.num}}</text>
+          </view>
+          <image class='fr'  src='http://oibl5dyji.bkt.clouddn.com/20170925113400.png'></image>
+      </view>
+  </view>
+</view>
+</block>
+
+<block wx:if="{{clicksearch}}">
+  <view class="content">
+   <view  wx:for="{{cityName}}" catchtap='gotocitydesc'  data-groupid='{{item.groupid}}' class='list clearfix'>
+          <image class='fl' src='{{item.gpic}}'></image>
+          <view class='innerbox'>
+            <text class='city'><text class='Num'>{{item.rank}}</text> {{item.gname}}</text>
+            <text class='photonum'>照片数:{{item.num}}</text>
+          </view>
+          <image class='fr'  src='http://oibl5dyji.bkt.clouddn.com/20170925113400.png'></image>
+      </view>
+  </view>
+</block>
+<block wx:if="{{nodata}}">
+    <image class="nodata" src='http://oibl5dyji.bkt.clouddn.com/20170925155500.png'></image>
+</block>

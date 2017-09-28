@@ -1,0 +1,27 @@
+<view class='userpic'>
+  <image  src="{{userpic}}"></image>
+ 
+</view>
+<view class='username'>
+  {{username}}
+</view>
+<view class='title'>
+ 参加了"照亮我的城市——{{city}}站活动"
+</view>
+<view class='slogan'>
+为我的城市点亮,为我们的城市加油
+</view>
+<block wx:if="{{hascontent}}">
+<view class='text'>
+    {{content}}
+</view>
+</block>
+<view class='imgs'>
+    <view class='template'>
+      <image data-index="{{index}}" catchtap='seebigpic' wx:for="{{pics}}" class='{{num}}' src='{{item}}'></image>
+    </view>
+</view>
+
+<view catchtap='gotoactiveindex' class='link'>
+<image  src='http://oibl5dyji.bkt.clouddn.com/2017092801.png'></image>
+</view>

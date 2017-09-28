@@ -1,0 +1,55 @@
+<view class='mydata'>
+    <view>
+        <image src='{{userpic}}'></image>
+        <image src='http://oibl5dyji.bkt.clouddn.com/20170926202902.png'></image>
+    </view>
+       
+    <view>
+        <text>{{username}}</text>
+        <text>我的排名：{{myRank}} 名</text>
+    </view>
+
+    <view>
+        <text>{{totalContribution}}</text>
+        <image src='http://oibl5dyji.bkt.clouddn.com/20170926202903.png'></image>
+    </view>
+</view>
+
+<!-- 照片排行 -->
+<view class='photolist'>
+    <view wx:for='{{photolist}}' class='template'>
+        <view class='index'>
+          <image wx:if="{{index == 0}}" src='http://oibl5dyji.bkt.clouddn.com/20170926202900.png'></image>
+          <image wx:elif="{{index ==1}}" src='http://oibl5dyji.bkt.clouddn.com/20170926202904.png'></image>
+          <image wx:elif="{{index ==2}}" src='http://oibl5dyji.bkt.clouddn.com/20170926202901.png'></image>
+          <text wx:else>{{item.rank}}</text>
+        </view>
+        <view class='desc'>
+          <view>
+           <image src='{{item.upic}}'></image>
+           <text  class="{{item.userid == userid?'red':''}}">{{item.unickname}}</text>
+          </view>
+          <view>
+           <text>{{item.num}}</text>
+            <image src='http://oibl5dyji.bkt.clouddn.com/20170926202903.png'></image>
+          </view>
+        </view>
+    </view> 
+   
+
+
+
+    <!-- <view class='template'>
+        <view>
+            <image src='http://oibl5dyji.bkt.clouddn.com/20170926202900.png'></image>
+            <image src='http://oibl5dyji.bkt.clouddn.com/1.jpg'></image>
+            <text class='name'>周杰伦</text>
+        </view>
+
+        <view>
+            <text>123456</text>
+            <image src='http://oibl5dyji.bkt.clouddn.com/20170926202903.png'></image>
+        </view>
+    </view> -->
+    
+</view>

@@ -1,0 +1,160 @@
+page{
+  height: 100%;
+  /* background:-webkit-gradient(linear, 0 0, 0 bottom, from(#ff0000), to(rgba(0, 0, 255, 0.2)));   */
+  /* background: yellow; */
+}
+.banner{
+  position: relative;
+}
+.bannerpic{
+  width: 100%;
+  height: 387rpx;
+  vertical-align: bottom;
+}
+.rule{
+  position: absolute;
+  width: 184rpx;
+  height: 54rpx;
+  bottom:103rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.searchinput{
+  position: absolute; 
+  bottom: 20rpx;
+  width: 710rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.searchpic{
+  position: absolute;
+  z-index: 10;
+  width: 24rpx;
+  height: 24rpx;
+  left: 290rpx;
+  top:15rpx;
+}
+.searchpicright{
+  position: absolute;
+  z-index: 10;
+  width: 30rpx;
+  height: 29rpx;
+  right: 12rpx;
+  top:11rpx; 
+   padding: 0 20rpx 0 50rpx; 
+}
+.phcolor{
+  color:#ccc;
+  text-align: center;
+  font-size: 25rpx;
+}
+.input-text{
+  height: 51rpx;
+  width: 710rpx;
+  border: 2rpx solid #ccc;
+  margin: 0 auto;
+  border-radius: 60rpx;
+   padding-left: 20rpx;  
+    background-color: white;   
+   box-sizing: border-box; 
+  font-size: 25rpx;
+  color:#999;
+}
+.mycity{
+  margin-top: 40rpx;
+}
+.mycity image{
+  width: 35rpx;
+  height: 35rpx;
+  margin-left: 20rpx;
+  vertical-align: middle;
+ 
+}
+.mycity text{
+  font-size: 28rpx;
+  color:#333;
+  margin-left: 11rpx;
+}
+.scroll-view_H{
+  height: 205rpx;   
+
+  width: 100%;
+  white-space: nowrap;
+  margin-top: 42rpx;
+  margin-bottom: 19rpx;
+}
+
+.datalist{
+  display: inline-block;
+  position: relative;
+  margin-left: 20rpx;
+  margin-right: 24rpx;
+
+}
+.datalist image{
+  width: 158rpx;
+  height: 158rpx;
+  border-radius: 50%;
+  display: block;
+}
+.datalist text{
+  font-size: 24rpx;
+  margin-top: 13rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family:PingFang; 
+}
+.mb_23{
+  margin-bottom: 23rpx;
+}
+.clearfix{zoom:1;}
+.clearfix:after{content:"";display:table;clear:both;overflow:hidden;}
+
+.content .list{
+  /* background-color: pink; */
+  position: relative;
+  padding-bottom: 37rpx;
+}
+.content .list .fl{
+  width: 119rpx;
+  height: 119rpx;
+  margin-left: 20rpx;
+  border-radius: 4rpx;
+  float: left;
+  margin-top: 23rpx;
+}
+.innerbox{
+  display: flex;
+  flex-direction: column;
+
+}
+.innerbox text:not(.Num){
+  font-size: 32rpx;
+  margin-left: 33rpx;
+}
+.innerbox .city{
+  color: #333;
+  margin-top: 28rpx;
+ 
+}
+.photonum{
+  color:#999;
+  font-size: 24rpx;
+  margin-top: 17rpx;
+  
+}
+.fr{
+  width: 25rpx;
+  height:35rpx;
+  position: absolute;
+  right: 20rpx;
+  top:64rpx;
+}
+.nodata{
+  width: 348rpx;
+  height: 323rpx;
+  margin: 0 auto;
+  display: block;
+  margin-top: 134rpx;
+}

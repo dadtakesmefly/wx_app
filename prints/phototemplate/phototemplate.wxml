@@ -1,0 +1,14 @@
+<view class="body-view">
+    <view catchtap='chooseImg' class='outbox'>
+      <view class='innerbox'>
+        <image  src='{{imgSrc}}'></image>
+      </view>
+    </view>
+
+    <navigator hover-class="none"  url='/pages/prints/scan/scan'>
+     <view catchtap='nowprint' class='button'>
+      下一步
+    </view>
+    </navigator>
+   
+</view>
