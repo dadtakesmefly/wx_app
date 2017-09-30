@@ -1,0 +1,39 @@
+<view class="show-container">
+  <view class="pic-prev">
+    <view wx:if="{{index < 9}}" wx:for="{{photoData.thumbnail}}" wx:key="{{index}}" class="picbox" catchtap="lookpreview" data-sel="{{index}}">
+      <image mode="aspectFill" class="{{photoData.thumbnail.length>9 && index == 8 ?'blur':''}}" src="{{item}}"></image>
+      <navigator catchtap="mored" class="more" wx:if="{{photoData.thumbnail.length>9&&index == 8}}" url="{{'/pages/shiyi/share/share?eid='+photoData.eid}}">
+        <view class="more-text">
+          {{photoData.thumbnail.length}}
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <!-- /* 发表动态文字 */ -->
+  <view class="upEtext" wx:if="{{photoData.etext}}">
+    <text>{{photoData.etext}}</text>
+  </view>
+  <!-- 地点 -->
+  <view class="upPlace" wx:if="{{photoData.eplace}}">
+    <text class="text1">在</text>
+    <image class="iconPlace" src="http://oibl5dyji.bkt.clouddn.com/20170913223021.png"></image>
+    <view class="place">
+      <text>{{photoData.eplace}}</text>
+    </view>
+  </view>
+  <view class="btnFixed">
+    <view class="share-area">
+      <button wx:if="{{canIUse}}" open-type="share">分享一下</button>
+      <text catchtap="shareIntro" wx:else>分享一下</text>
+      <!-- <image catchtap="shareIntro" wx:else></image> -->
+    </view>
+    <!-- <view class="btn-area">
+    <navigator open-type="redirect" url="/pages/commonpage/makeBurnAfterupload/makeBurnAfterupload?" class="burn"></navigator>
+    <navigator url="url" catchtap="makepingtu" class="pingtu"></navigator>
+  </view>
+  <view class="bgColor"></view> -->
+    <view class="btn-complete" catchtap="uploadcomplete">
+      <text>回到相册</text>
+    </view>
+  </view>
+</view>

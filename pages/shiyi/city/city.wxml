@@ -16,9 +16,9 @@
           </view>
     </view>
   </view>
-  <button open-type='share'>
-    <image class='invite' src='http://oibl5dyji.bkt.clouddn.com/20170926132705.png'></image>
-  </button>
+  <!-- <button hover-class='none' open-type='share'> -->
+    <image catchtap='newshare' class='invite' src='http://oibl5dyji.bkt.clouddn.com/20170926132705.png'></image>
+  <!-- </button> -->
 </view>
 <view class='myinfo'>
   <view class='myinfotitle'>
@@ -42,8 +42,45 @@
     </view>
   </view>
 </view>
-<view class="upLoad" wx:if="{{showpuzze}}" catchtap="showPvModel">
+
+<!-- 点击助力 -->
+<block wx:if="{{isshow}}">
+<view catchtap='cancel_marsk' class='marsk'>
+</view>
+<view class='newshare'>
+    <view class='newshare_tip'>分享到</view>
+    <view class='newshare_list'>
+      <view>
+        <button open-type='share'>
+          <image src='http://oibl5dyji.bkt.clouddn.com/20170928200.png'></image>
+          <text> 微信好友</text>
+        </button>
+      </view>
+      <view>
+        <button catchtap='gotoqrcode' >
+         <image src='http://oibl5dyji.bkt.clouddn.com/20170928201.png'></image>
+        <text>朋友圈</text>
+        </button>
+      </view>
+    </view>
+    <view class='newshare_line'></view>
+    <view catchtap='closeshare' class='newshare_cancel'>
+      取消
+    </view>
+</view>
+</block>
+
+
+
+
+<!-- 原始上传图片和视频 -->
+<!-- <view class="upLoad" wx:if="{{showpuzze}}" catchtap="showPvModel">
     <image src="http://oibl5dyji.bkt.clouddn.com/20170925144224.png"></image>
+</view> -->
+
+<!-- 只能上传图片 -->
+<view class="upLoad" wx:if="{{showpuzze}}" catchtap="uploadpic">
+    <!-- <image src="http://oibl5dyji.bkt.clouddn.com/20170925144224.png"></image> -->
 </view>
 <!--时间轴和上传图片  -->
 <view>
@@ -114,9 +151,9 @@
                 <view class="funItem" wx:if="{{userid == listitem.publishUser.userid || ablumInfo.canDelete}}">
                   <image catchtap="delete_event" data-first="{{Aindex}}" data-second="{{Bindex}}" catchtap="delete_event" style="margin-left:40rpx;" src="http://oibl5dyji.bkt.clouddn.com/20170920133424.png"></image>
                 </view>
-                <view class="funItem" wx:if="{{listitem.eMain!=4}}">
+                <!-- <view class="funItem" wx:if="{{listitem.eMain!=4}}">
                   <image data-parentindex="{{Aindex}}" data-childindex="{{Bindex}}" catchtap="toDetailSync" src="http://oibl5dyji.bkt.clouddn.com/20170920133426.png"></image>
-                </view>
+                </view> -->
                 <view class="funItem">
                   <view class="likeFunBox" catchtap="like" catchtap="like" wx:if="{{listitem.showlibox}}" data-parentindex="{{Aindex}}" data-childindex="{{Bindex}}">
                     <view class="fiveLikeBox">
@@ -184,85 +221,21 @@
                 <text>说点什么吧...</text>
               </view>
 
-
-              <!-- ——————分割线—————— -->
-              <!-- <image hidden="{{!(ablumInfo.canDelete) && listitem.eMain==4 && userid != listitem.publishUser.userid && (listitem.etext=='') && (!listitem.eplace) }}" class="positionImg" src="http://oibl5dyji.bkt.clouddn.com/20170731133836.png"></image> -->
-              <!-- 点赞类容展示 -->
-              <!-- <view class="likelistbox" wx:if="{{listitem.like.length>0 && listitem.eMain!=4}}">
-                <view class="likelist_item" wx:if="{{likeindex < 6}}" wx:for="{{listitem.like}}" wx:key="{{likeindex}}" wx:for-item="likeitem" wx:for-index="likeindex">
-                  <image mode="aspectFill" src="{{likeitem.upic}}" class="item_headerpic"></image>
-                  <icon class="like_cat {{likeitem.likeStatus}}"></icon>
-                </view>
-                <view class="nextnum" wx:if="{{listitem.like.length > 6 }}">
-                  <navigator catchtap="preReset" class="likenav" url="{{'../../pages/eventdetail/eventdetail?dateindex='+Aindex+'&rowindex='+Bindex+'&eid='+listitem.eid+'&efrom=viewscoll'}}">{{listitem.like.length}}</navigator>
-                </view>
-              </view> -->
-              <!-- 发动态时的文字 -->
-              <!-- <text wx:if="{{listitem.etext}}" class="contenttext">{{listitem.etext}}</text> -->
-              <!-- 有语音显示语音框 -->
-              <!-- <view class="toAppBox" catchtap="openAudioModel" wx:if="{{listitem.eaudio && listitem.eMain!=4}}">
-                <image class="textImg" src="http://oibl5dyji.bkt.clouddn.com/20170731133841.png"></image>
-                <view class="centerLine"></view>
-                <image class="luyinImg" src="http://oibl5dyji.bkt.clouddn.com/20170731133832.png"></image>
-              </view> -->
-              <!-- 有地点时 -->
-              <!-- <view class="placeBox" wx:if="{{listitem.eplace}}">
-                <text>在</text>
-                <image src="http://oibl5dyji.bkt.clouddn.com/20170731133840.png"></image>
-                <text class="place">{{listitem.eplace}}</text>
-              </view> -->
-              <!-- 评论 -->
-              <!-- <view class="talklistbox" catchtap="recomment" data-dataindex="{{Aindex}},{{Bindex}}" data-eid="{{listitem.eid}}" wx:if="{{listitem.comments.length>0 && listitem.eMain!=4}}">
-                <block wx:for="{{listitem.comments}}" wx:key="item.cid">
-                  <view class="comment" wx:if="{{listitem.comments.length<5 ||(listitem.comments.length>4&&(index==0||index==(listitem.comments.length-1)||index==(listitem.comments.length-2)))}}">
-                    !-- --主评论展示-- --
-                    <block wx:if="{{item.commentedUser.userid == 10}}">
-                      <image class="commentPic" src="{{item.commentUser.upic}}"></image>
-                      <view class="contentDetail">
-                        <text class="commentuser" data-commentindex="{{index}}">{{item.commentUser.unickname}}：</text>
-                        <text class="commentcontent" data-commentindex="{{index}}">{{item.ccontent}}</text>
-                      </view>
-                    </block>
-                    !-- --回复内容展示-- --
-                    <block wx:else>
-                      <image class="commentPic" src="{{item.commentUser.upic}}"></image>
-                      <view class="contentDetail">
-                        <text data-commentindex="{{index}}" class="commentuser">{{item.commentUser.unickname}}</text>
-                        <text data-commentindex="{{index}}">回复</text>
-                        <text data-commentindex="{{index}}" class="commentuser">{{item.commentedUser.unickname}}：</text>
-                        <text data-commentindex="{{index}}" class="commentcontent">{{item.ccontent}}</text>
-                      </view>
-                    </block>
-                  </view>
-                  <navigator catchtap="preReset" url="{{'../../pages/eventdetail/eventdetail?dateindex='+Aindex+'&rowindex='+Bindex+'&eid='+listitem.eid+'&efrom=viewscoll'}}">
-                    <view class="lookAllComment" wx:if="{{index==1&&listitem.comments.length>4}}">
-                      <image src="http://oibl5dyji.bkt.clouddn.com/20170731133831.png"></image>
-                      <text>{{listitem.comments.length}}评论</text>
-                    </view>
-                  </navigator>
-                </block>
-              </view> -->
-              <!-- 删除和品论按钮 -->
-              <!-- <view class="icon_funBox" wx:if="{{listitem.eMain!=4 || userid == listitem.publishUser.userid || (ablumInfo.canDelete)}}">
-                <view class="icon_delete_event" wx:if="{{userid == listitem.publishUser.userid || ablumInfo.canDelete}}" catchtap="delete_event" data-first="{{Aindex}}" data-second="{{Bindex}}"></view> -->
-              <!-- <view wx:if="{{listitem.eMain!=4}}" class="icon_commit" catchtap="comment" data-parentindex="{{Aindex}}" data-childindex="{{Bindex}}"></view> -->
-              <!-- </view> -->
             </view>
           </block>
           <!-- 没有图片视频 -->
           <block wx:else>
             <view class="list-item-child">
               <view class="childTop">
-                <view class="uptimebox">
-                  <view class="bgImg"></view>
-                  <text class="uptime">{{listitem.time}}</text>
-                  <block wx:if="{{ablumInfo.gtype == 10}}">
-                    <icon class="top" wx:if="{{listitem.isTopInRecommendGroup == 1}}"></icon>
-                    <icon class="top" wx:elif="{{listitem.isRecommend == 0 && listitem.elevel == 1}}"></icon>
-                  </block>
-                  <block wx:else>
+                <image class="item_headerpic" mode="aspectFill" src="{{listitem.publishUser.upic}}"></image>
+                <view class="item_userDate">
+                  <view class="item_userName">
+                    {{listitem.publishUser.unickname}}
+                  </view>
+                  <view class="uptimebox">
                     <icon class="top" wx:if="{{listitem.elevel == 1}}"></icon>
-                  </block>
+                    <text class="uptime">{{listitem.time}}</text>
+                  </view>
                 </view>
               </view>
               <!-- 有语音显示语音框 -->
@@ -280,7 +253,7 @@
     </block>
     <view class="btmPrompt">
       <image src="http://oibl5dyji.bkt.clouddn.com/20170925144226.png"></image>
-      <text>到底了!亲~</text>
+      
     </view>
   </view>
   <view wx:else class="noitem">
@@ -293,10 +266,18 @@
 <view class="pvModel" wx:if="{{pvShowModel}}">
   <view class="pvModel-box" catchtap="closepvModel">
     <view class="pvModel-main">
-      <image class="pvModel-pic" catchtap="uploadpic" src="http://oibl5dyji.bkt.clouddn.com/20170616133924.png"></image>
+      <!-- 原始上传图片 -->
+      <!-- <image class="pvModel-pic" catchtap="uploadpic" src="http://oibl5dyji.bkt.clouddn.com/20170616133924.png"></image> -->
+
       <image class="pvModel-line" src="http://oibl5dyji.bkt.clouddn.com/20170616133922.png"></image>
       <image class="pvModel-vid" catchtap="uploadvideo" src="http://oibl5dyji.bkt.clouddn.com/20170616133923.png"></image>
       <image class="pvModel-close" catchtap="closepvModel" src="http://oibl5dyji.bkt.clouddn.com/20170616133921.png"></image>
     </view>
   </view>
 </view>
+<!-- 点我 -->
+  <view wx:if="{{port}}" class="goHome" catchtap="goHome">
+    <view class="clikeMe">
+    </view>
+    <image class="gengduo" src="http://oibl5dyji.bkt.clouddn.com/20170929180405.png"></image>
+  </view>

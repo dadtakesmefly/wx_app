@@ -1,0 +1,20 @@
+ <!-- <view>
+<image src='http://oibl5dyji.bkt.clouddn.com/20170928105.jpg'></image>
+<image src='http://oibl5dyji.bkt.clouddn.com/20170928104.png'></image>
+<image src='http://oibl5dyji.bkt.clouddn.com/20170928103.png'></image>
+<image catchtap='seebigpic'  src='{{codepic}}'></image>
+</view>  -->
+
+<view>
+  <view class='bgbanner'>
+    <view>
+       <image  class='code' catchtap='seebigpic' src='http://oibl5dyji.bkt.clouddn.com/20170929130817.png'></image> 
+    </view>
+      <!-- <button type='primary' hover-class='none'>保存到本地相册</button>  -->
+      <view class='tips'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20170929155326.png'></image>
+     </view> 
+    
+  </view>
+
+</view>

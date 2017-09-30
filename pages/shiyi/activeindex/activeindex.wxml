@@ -5,10 +5,11 @@
    </navigator>
   
    <view class='searchinput' >
-    <input confirm-type='search' bindfocus='onfocus'	 bindconfirm='bindconfirm'  placeholder-class="phcolor" class="input-text" name="username"  value='{{promoto}}'   placeholder="{{placeholder}}" /> 
-    <view catchtap='cancel'>
+    <input confirm-type='search' bindfocus='onfocus' bindblur="bindblur"	 bindconfirm='bindconfirm'  placeholder-class="phcolor" class="input-text" name="username"  value='{{promoto}}'   placeholder="{{placeholder}}" /> 
+    <button catchtap='cancel' hover-class='none'>取消</button>
+    <!-- <view catchtap='cancel'>
       <image   class='{{searchpic}}' src='{{serchpicurl}}'></image>
-    </view>  
+    </view>   -->
   
   </view>
 </view>
@@ -37,7 +38,7 @@
   <!-- 标题 -->
   <view class='mycity mb_23'>
     <image  src='http://oibl5dyji.bkt.clouddn.com/20170925113320.png'></image>
-    <text>城市排行</text>
+    <text>城市排行(每5分钟更新一次排名)</text>
   </view>
    <!-- 排序内容 -->
   <view class='content'>

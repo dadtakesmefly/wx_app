@@ -9,7 +9,7 @@ Page({
     placeholder:"搜索城市",
     searchpic: "searchpic",
     serchpicurl:"http://oibl5dyji.bkt.clouddn.com/20170925113500.png",
-    mycity:true,
+    mycity:false,
     inputonfocus:true,
     clicksearch:false,
     nodata:false,
@@ -42,20 +42,51 @@ Page({
     
     })
   },
+  //失去焦点
+  bindblur:function(e){
+    var that = this;
+    console.log(e.detail.value);
+    //判断输入框是否有文本
+    if (e.detail.value == "")
+    that.setData({
+      searchpic: "searchpicright",
+      serchpicurl: "http://oibl5dyji.bkt.clouddn.com/20170925154700.png",
+      mycity: true,
+      inputonfocus: true,
+      nodata: false,
+
+    })
+  },
   //取消搜索
   cancel:function(){
     var that = this
-    that.setData({
+    if(wx.getStorageSync("mycitylist").length == 0){
+      that.setData({
       placeholder: "搜索城市",
       searchpic: "searchpic",
       serchpicurl: "http://oibl5dyji.bkt.clouddn.com/20170925113500.png",
-      mycity: true,
       inputonfocus: true,
       promoto:"",
       clicksearch: false,
       onfocus:false,
       nodata: false,
+      mycity: false,
     })
+    }
+    else{
+      that.setData({
+        placeholder: "搜索城市",
+        searchpic: "searchpic",
+        serchpicurl: "http://oibl5dyji.bkt.clouddn.com/20170925113500.png",
+        inputonfocus: true,
+        promoto: "",
+        clicksearch: false,
+        onfocus: false,
+        nodata: false,
+        mycity: true,
+      })
+    }
+    
 
   },
 
@@ -124,46 +155,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    //我的城市
-    var userid = wx.getStorageSync("userid")
-    console.log(userid)
-    wx.showLoading({
-      title: "加载中",
-    })
-    wx.request({
-      url: 'https://api.zhuiyinanian.com/YinianProject/activity/ShowMyCitySpace',
-      data:{
-        userid:userid
-      },
-      success:function(res){
-        console.log(res)
-       var mycitylist = res.data.data
-       that.setData({
-         mycitylist: mycitylist,
-         nodata: false,
-       })
-      }
-    })
-    //城市排行
-    // var groupid = wx.getStorageSync("groupid");
-    // console.log(groupid)
-    wx.request({
-      url: "https://api.zhuiyinanian.com/YinianProject/activity/ShowCitySpaceList",
-      data:{
-        userid: userid
-      },
-      success:function(res){
-        wx.hideLoading()
-          console.log(res)
-          console.log(res.data.data)
-          var citylist = res.data.data
-          that.setData({
-            citylist: citylist,
-            nodata: false,
-          })
-      }
-    })
+   
 
   },
 
@@ -178,7 +170,59 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var that = this
+    //我的城市
+    var userid = wx.getStorageSync("userid")
+    console.log(userid)
+    wx.showLoading({
+      title: "加载中",
+    })
+    wx.request({
+      url: 'https://api.zhuiyinanian.com/YinianProject/activity/ShowMyCitySpace',
+      data: {
+        userid: userid
+      },
+      success: function (res) {
+        console.log(res)
+        var mycitylist = res.data.data
+        wx.setStorageSync("mycitylist", mycitylist)
+        console.log(mycitylist)
+        if (mycitylist.length == 0) {
+          that.setData({
+            mycity: false,
+            mycitylist: mycitylist,
+            nodata: false,
+          })
+        }
+        else {
+          that.setData({
+            mycity: true,
+            mycitylist: mycitylist,
+            nodata: false,
+          })
+        }
+
+      }
+    })
+    //城市排行
+    // var groupid = wx.getStorageSync("groupid");
+    // console.log(groupid)
+    wx.request({
+      url: "https://api.zhuiyinanian.com/YinianProject/activity/ShowCitySpaceList",
+      data: {
+        userid: userid
+      },
+      success: function (res) {
+        wx.hideLoading()
+        console.log(res)
+        console.log(res.data.data)
+        var citylist = res.data.data
+        that.setData({
+          citylist: citylist,
+          nodata: false,
+        })
+      }
+    })
   },
 
   /**

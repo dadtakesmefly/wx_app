@@ -20,12 +20,17 @@ page{
   transform: translateX(-50%);
 }
 .searchinput{
+  display: flex;
+  padding: 10rpx 0rpx 10rpx 10rpx;
+}
+
+/* .searchinput{
   position: absolute; 
   bottom: 20rpx;
   width: 710rpx;
   left: 50%;
   transform: translateX(-50%);
-}
+} */
 .searchpic{
   position: absolute;
   z-index: 10;
@@ -33,6 +38,7 @@ page{
   height: 24rpx;
   left: 290rpx;
   top:15rpx;
+
 }
 .searchpicright{
   position: absolute;
@@ -50,15 +56,30 @@ page{
 }
 .input-text{
   height: 51rpx;
-  width: 710rpx;
+  width: 640rpx;
   border: 2rpx solid #ccc;
-  margin: 0 auto;
-  border-radius: 60rpx;
-   padding-left: 20rpx;  
-    background-color: white;   
-   box-sizing: border-box; 
+  /* margin: 0 auto; */
+  /* border-radius: 60rpx; */
+  padding-left: 20rpx;  
+  background-color: white;   
+  box-sizing: border-box; 
   font-size: 25rpx;
   color:#999;
+}
+button{
+  margin: 0;
+  padding: 0;
+  width: 100rpx;
+  font-size: 28rpx;
+  height: 51rpx;
+  line-height: 52rpx;
+  background-color: white;
+  color:#999;
+}
+.clickcancel{
+  font-size: 28rpx;
+  text-align: center;
+  background-color: pink;
 }
 .mycity{
   margin-top: 40rpx;

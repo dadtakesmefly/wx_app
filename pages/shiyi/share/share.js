@@ -12,7 +12,8 @@ Page({
     city: "武汉", //城市
     username:"", //用户名
     userpic:"", //用户头像
-    hascontent:true //默认文本有内容
+    hascontent:true ,//默认文本有内容
+    url:"",
   },
 
   /**
@@ -38,8 +39,8 @@ Page({
     if (options.fromEventID) {
       this.fromEventID = options.fromEventID;
     }
-    if (options.eventId) {
-      this.eventId = options.eventId;
+    if (options.eid) {
+      this.eid = options.eid;
     }
   },
 
@@ -60,7 +61,7 @@ Page({
     var nc = this.fromUserID ? this.fromUserID : 0;
     var nd = this.fromSpaceID ? this.fromSpaceID : 0;
     var ne = this.fromEventID ? this.fromEventID : 0;
-    var nf = this.eventId ? this.fromEventID : 274514;
+    var nf = this.eid? this.eid : 274514;
 
     //登录授权
     app.getUserInfo(function (userInfo) {
@@ -76,6 +77,7 @@ Page({
           console.log(res.data.data)
           console.log(res.data.data[0].thumbnail)
           var pics = res.data.data[0].thumbnail;
+          var url = res.data.data[0].url;
           var content = res.data.data[0].etext
           var userpic = res.data.data[0].publishUser.upic
           var username = res.data.data[0].publishUser.unickname
@@ -95,7 +97,8 @@ Page({
               content: content,
               city: city,
               username: username,
-              userpic: userpic
+              userpic: userpic,
+              url:url
             })
           }
           //照片数量为1
@@ -106,7 +109,8 @@ Page({
               content: content,
               city: city,
               username: username,
-              userpic: userpic
+              userpic: userpic,
+              url: url
             })
           }
           //照片数量为2
@@ -117,7 +121,8 @@ Page({
               content: content,
               city: city,
               username: username,
-              userpic: userpic
+              userpic: userpic,
+              url: url
             })
           }
           //照片数量为3
@@ -128,7 +133,8 @@ Page({
               content: content,
               city: city,
               username: username,
-              userpic: userpic
+              userpic: userpic,
+              url: url
             })
           }
           //照片数量为4
@@ -139,7 +145,8 @@ Page({
               content: content,
               city: city,
               username: username,
-              userpic: userpic
+              userpic: userpic,
+              url: url
             })
           }
           //照片数量为3或者5以上
@@ -150,26 +157,28 @@ Page({
               content: content,
               username: username,
               userpic: userpic,
-              city: city
+              city: city,
+              url: url
             })
           }
     
         }
 
       })
-    }, na, nb, nc, nd, ne);
+    }, na, nb, nc, nd, ne, nf);
   },
   gotoactiveindex:function(){
       wx.redirectTo({
         url: '/pages/shiyi/activeindex/activeindex',
       })
   },
+  //查看大图
   seebigpic:function(e){
     console.log(e)
     var index = e.currentTarget.dataset.index;
     wx.previewImage({
-      current: this.data.pics[index] , // 当前显示图片的http链接
-      urls: this.data.pics // 需要预览的图片http链接列表
+      current: this.data.url[index] , // 当前显示图片的http链接
+      urls: this.data.url // 需要预览的图片http链接列表
     })
   },
   /**
@@ -203,7 +212,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    
-  }
+  
 })

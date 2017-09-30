@@ -1,0 +1,55 @@
+<!--pages/shiyi/hduplodpic/hduplodpic.wxml-->
+<view class="container">
+  <view class="section">
+    <form bindsubmit="formSubmit" report-submit="true">
+      <view class="main-section">
+        <view class="textIcon">
+          <image style="margin-top:{{sys=='iOS' ? 16 : 0}}rpx;" src="http://oibl5dyji.bkt.clouddn.com/20170913111425.png"></image>
+        </view>
+        <textarea placeholder="留下美好回忆" name="text" placeholder-style="color:#999;" />
+      </view>
+      <view class="subPlace">
+        <navigator url="/pages/selectplace/selectplace" class="eplacecontainer">
+          <icon class="icon_place"></icon>
+          <text class="text-place">{{place}}</text>
+          <icon class="icon_arr"></icon>
+        </navigator>
+      </view>
+      
+      <!-- <view class="syncPic" catchtap="toUploadSync">
+        <image class="syncLogo" src="http://oibl5dyji.bkt.clouddn.com/20170913111426.png"></image>
+        <view class="picName">
+          <text>{{nameString ? nameString :'同步到其它相册'}}</text>
+        </view>
+        <image class="syncDir" src="http://oibl5dyji.bkt.clouddn.com/20170913111421.png"></image>
+      </view> -->
+     
+
+      <view class="subbtn">
+        <button class="{{choosepic.length>0?'hasPic':''}}" formType="submit">开始上传</button>
+      </view>
+    </form>
+  </view>
+  <view class="subpic">
+    <view class="picitem add" catchtap="addpic">
+      <view class="addicon">
+        <image src="http://oibl5dyji.bkt.clouddn.com/20170913111423.png"></image>
+      </view>
+    </view>
+    <view class="picitem" wx:for="{{choosepic}}" wx:key="{{index}}">
+      <image data-src="{{item}}" mode="aspectFill" src="{{item}}"></image>
+      <icon catchtap="picpdelete" data-index="{{index}}" class="delete"></icon>
+    </view>
+
+  </view>
+  <view class="popupbg" catchtap="prevent" hidden="{{hiddenprocess}}">
+    <view class="upprocess">
+      <view class="loading"></view>
+      <view class="textbox">
+        <text class="uploadednum">{{uploadnum}}</text>
+        <icon class="line"></icon>
+        <text class="allnum">{{totalnum}}</text>
+      </view>
+    </view>
+  </view>
+</view>

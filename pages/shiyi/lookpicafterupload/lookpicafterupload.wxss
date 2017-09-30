@@ -1,0 +1,180 @@
+
+.show-container{
+  padding-bottom:196rpx;
+}
+.pic-prev {
+  padding-left:20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /* height: 494rpx; */
+}
+
+.picbox {
+  position: relative;
+  margin-bottom: 8rpx;
+  margin-right:8rpx;
+  width: 231rpx;
+  height: 231rpx;
+  box-sizing: border-box;
+}
+
+.more {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ababab;
+  font-size: 32rpx;
+}
+.more-text{
+  width:120rpx;
+  height:120rpx;
+  border-radius:50%;
+  background:#fff;
+  color:#666;
+  font-size:56rpx;
+  font-weight: bold;
+  line-height:120rpx;
+  text-align:center;
+}
+.picbox image {
+  width: 100%;
+  height: 100%;
+  vertical-align: bottom;
+}
+
+/* 发表动态文字 */
+.upEtext{
+  width:710rpx;
+  padding:0 20rpx;
+  margin-top:20rpx;
+}
+.upEtext text{
+  color:#333;
+  font-size:28rpx;
+  line-height:32rpx;
+}
+
+/* 地点 */
+.upPlace{
+  width:710rpx;
+  padding:0 20rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top:30rpx;
+}
+.text1{
+  color:#999;
+  font-size:28rpx;
+}
+.iconPlace{
+  width:24rpx;
+  height:29rpx;
+}
+.place{
+  width:626rpx;
+  display: flex;
+}
+.place text{
+  color:#333;
+  font-size:28rpx;
+}
+
+/* 底部按钮 */
+
+.btnFixed{
+  width:100%;
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:1000;
+  background:rgba(255, 255, 255, 0.5);
+  height:196rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items:center;
+}
+
+.share-area {
+  width:710rpx;
+  height:68rpx;
+  margin-top:20rpx;
+}
+.share-area image{
+  width:245rpx;
+  height:65rpx;
+}
+.share-area button{
+  width:710rpx;
+  height:68rpx;
+  color:#333;
+  font-size: 28rpx;
+  background:#fff175;
+  border-radius: 10rpx;
+}
+.share-area text{
+  color:#333;
+  font-size:28rpx;
+  display: block;
+  width:710rpx;
+  height:68rpx;
+  line-height:68rpx;
+  text-align: center;
+  background:#fff175;
+  border-radius: 10rpx;
+}
+
+/* .btn-area {
+  padding:24rpx 0 45rpx;
+  width: 750rpx;
+  height: 168rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom:1rpx solid #cecece;
+}
+
+.burn, .pingtu {
+  display: inline-block;
+  width: 168rpx;
+  height: 168rpx;
+}
+
+.burn {
+  background: url('http://oibl5dyji.bkt.clouddn.com/20170705100931.png') no-repeat center;
+  background-size: cover;
+  margin-right: 80rpx;
+}
+
+.pingtu {
+  background: url('http://oibl5dyji.bkt.clouddn.com/20170705100932.png') no-repeat center;
+  background-size: cover;
+} */
+
+.btn-complete {
+  width: 710rpx;
+  height: 68rpx;
+  background: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:20rpx;
+  border-radius:10rpx;
+}
+.btn-complete text{
+  color:#fff;
+  font-size:28rpx;
+}
+/* .bgColor{
+  width:100%;
+  height:17rpx;
+  background:#efeff5;
+} */
+.blur {
+  filter: blur(3px);
+}

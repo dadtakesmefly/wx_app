@@ -43,6 +43,7 @@ Page({
     todayContribution: "",
     totalContribution: "",
     myRank: "",
+    isshow:false
   },
   // prevent: function () {
   //   this.setData({
@@ -54,11 +55,38 @@ Page({
     return;
   },
   gotoleaderboard:function(){
+    var that = this
+
+    wx.setStorageSync("myRank", that.data.myRank)
+    wx.setStorageSync("totalContribution", that.data.totalContribution)
+    
     wx.navigateTo({
       url: '../photoorder/photoorder',
     })
   },
-
+  newshare:function(){
+    this.setData({
+      isshow:true,
+    })
+  },
+  closeshare:function(){
+    this.setData({
+      isshow: false,
+    })
+  },
+  gotoqrcode:function(){
+    wx.navigateTo({
+      url: '/pages/shiyi/qrcode/qrcode',
+    })
+    this.setData({
+      isshow: false,
+    })
+  },
+  cancel_marsk:function(){
+    this.setData({
+      isshow: false,
+    })
+  },
   onLoad: function (options) {
     // 统计需要的字段
 console.log(options)
@@ -284,8 +312,7 @@ console.log(options)
           var myRank = res.data.data[0].myContribution.myRank
           var todayContribution = res.data.data[0].myContribution.todayContribution
           var totalContribution = res.data.data[0].myContribution.totalContribution
-          wx.setStorageSync("myRank", myRank)
-          wx.setStorageSync("totalContribution", totalContribution)
+         
           // wx.setStorageSync("gname", gname)
           //设置标题
           wx.setNavigationBarTitle({
@@ -306,15 +333,18 @@ console.log(options)
     }, na, nb, nc, nd, ne)
   },
   goHome: function () {
-    if (wx.reLaunch) {
-      wx.reLaunch({
-        url: '/pages/index/index',
-      })
-    } else {
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
-    }
+    wx.redirectTo({
+      url: '/pages/shiyi/activeindex/activeindex',
+    })
+    // if (wx.reLaunch) {
+    //   wx.reLaunch({
+    //     url: '/pages/index/index',
+    //   })
+    // } else {
+    //   wx.switchTab({
+    //     url: '/pages/index/index',
+    //   })
+    // }
   },
   addmember: function () {
     wx.showModal({
@@ -555,7 +585,7 @@ console.log(options)
               pvShowModel: false
             })
             wx.navigateTo({
-              url: '/pages/uploadpic/uploadpic'
+              url: "/pages/shiyi/hduplodpic/hduplodpic"
             })
           },
           fail: function () {
@@ -883,9 +913,15 @@ console.log(options)
   onShareAppMessage: function () {
     let _this = this
     return {
-      title: _this.nickname + '邀请你加入“' + _this.gname + '“相册',
-      desc: '这里面有几张我很喜欢的照片，快来看看你喜欢嘛？',
-      path: '/pages/viewscoll/viewscoll?port=小程序空间分享&groupid=' + wx.getStorageSync('groupid') + '&from=grouplist'
+      title: _this.nickname + '参加了照亮我的城市——' + _this.gname + '站活动，你也快来参加吧...',
+      desc: '有你助力更精彩',
+      path: '/pages/shiyi/city/city?port=小程序空间分享&groupid=' + wx.getStorageSync('groupid') + '&from=grouplist',
+      imageUrl: 'http://oibl5dyji.bkt.clouddn.com/20170929200404.png',
+      success: function (res) {
+       _this.setData({
+         isshow: false,
+       })
+      },
     }
   },
   returnhome: function () {
