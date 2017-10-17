@@ -541,6 +541,37 @@ WXML 中的动态数据均来自对应 Page 的 data，并且需要调用setData
   wx.setStorageSync(KEY,DATA)将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
   wx.getStorageSync(KEY)从本地缓存中同步获取指定 key 对应的内容。
   **[点击查看更多](https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxsetstorageobject)**
+  
+### url传递参数	
+前一个页面通过url跳转传递参数到目标页面
+	wx.navigateTo({
+        url: '../photoerlist/photoerlist?searchLimit=' + that.data.activeList.menu[1].searchLimit + '&urlTitle=' + that.data.activeList.menu[1].urlTitle
+      })
+目标页面获取参数
+	onLoad: function (options) {
+    this.searchLimit = options.searchLimit ? options.searchLimit : 100;
+    this.urlTitle = options.urlTitle 
+    var that = this
+    wx.request({
+      url: "https://api.zhuiyinanian.com/YinianProject/space/GetGroupLikeList",
+      data: {
+        groupid: wx.getStorageSync("groupid"),
+        uid: wx.getStorageSync("userid"),
+        searchLimit: that.searchLimit  //使用上一个页面传来的参数
+	},
+      success: function (res) {
+        console.log(res)
+        var likelist = res.data.data;
+        that.setData({
+          likelist: likelist
+        })
+        wx.setNavigationBarTitle({
+          title: that.urlTitle, //使用上一个页面传来的参数
+        })
+      }
+    })
+  },
+
 ### 扫描二维码
  调起客户端扫码界面，扫码成功后返回对应的结果
 		
